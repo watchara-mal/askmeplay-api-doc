@@ -15,7 +15,7 @@
                 <code>Method : {{ methodType }}</code>
             </div>
             <div>
-                <code>Path : {URL-API}{{ pathURL }}</code>
+                <code>Path : {{urlAPI}}{{ pathURL }}</code>
             </div>
             <br>
         </div>
@@ -43,6 +43,7 @@ export default {
             pageName: "Join Game",
             pageDes: "Use for Partner Join Game",
             methodType: "POST",
+            urlAPI: "URL-API",
             pathURL: "/joinGame",
 
             headerReq: 'Request Body',
@@ -169,8 +170,6 @@ export default {
                 
                 jsonFormat += "\n}";
             }
-
-            console.log(jsonFormat);
 
             return jsonFormat;
         },
