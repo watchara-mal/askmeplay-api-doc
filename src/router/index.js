@@ -38,6 +38,7 @@ const routes = [
         path: '/',
         name: '',
         component: Main,
+        redirect: '/overview',
         children: [
             // Home
             {

@@ -283,7 +283,7 @@ export default {
     created() {
         this.menuList.forEach(menu => {
             menu.subMenuList.forEach(subMenu => {
-                if(subMenu.path == this.$route.path){
+                if(subMenu.path == this.$route.path && subMenu.link == ""){
                     subMenu.active = true;
                 }
             });
