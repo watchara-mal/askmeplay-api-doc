@@ -7,7 +7,6 @@ import Overview from '../views/home/Overview.vue'
 
 // Common
 import JoinGame from '../views/common/JoinGame.vue'
-import VerifySession from '../views/common/VerifySession.vue'
 import KickMember from '../views/common/KickMember.vue'
 import GetGameList from '../views/common/GetGameList.vue'
 import GetBetDetailURL from '../views/common/GetBetDetailURL.vue'
@@ -15,11 +14,13 @@ import GetBetDetailByBetID from '../views/common/GetBetDetailByBetID.vue'
 import GetBetDetailByTime from '../views/common/GetBetDetailByTime.vue'
 
 // Transfer
+import VerifySessionTransfer from '../views/transfer/VerifySession.vue'
 import ExchangeTransfer from '../views/transfer/ExchangeTransfer.vue'
 import GetMemberInfo from '../views/transfer/GetMemberInfo.vue'
 import VerifyTransfer from '../views/transfer/VerifyTransfer.vue'
 
 // Seamless 
+import VerifySessionSeamless from '../views/seamless/VerifySession.vue'
 import Bet from '../views/seamless/Bet.vue'
 import CancelBet from '../views/seamless/CancelBet.vue'
 import Payout from '../views/seamless/Payout.vue'
@@ -55,11 +56,6 @@ const routes = [
                 component: JoinGame
             },
             {
-                path: 'verifysession',
-                name: 'verifySession',
-                component: VerifySession
-            },
-            {
                 path: 'kickmember',
                 name: 'kickMember',
                 component: KickMember
@@ -87,6 +83,11 @@ const routes = [
 
             // Transfer
             {
+                path: 'verifysession/transfer',
+                name: 'verifySessionTransfer',
+                component: VerifySessionTransfer
+            },
+            {
                 path: 'exchangetransfer',
                 name: 'exchangeTransfer',
                 component: ExchangeTransfer
@@ -103,6 +104,11 @@ const routes = [
             },
 
             // Seamless
+            {
+                path: 'verifysession/seamless',
+                name: 'verifySessionSeamless',
+                component: VerifySessionSeamless
+            },
             {
                 path: 'bet',
                 name: 'bet',

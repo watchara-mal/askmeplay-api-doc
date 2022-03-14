@@ -94,7 +94,7 @@ export default {
                             text: "Verify Session",
                             icon: "",
                             active: false,
-                            path: "/verifysession",
+                            path: "/verifysession/transfer",
                             link: ""
                         },
                         {
@@ -172,7 +172,7 @@ export default {
                             text: "Verify Session",
                             icon: "",
                             active: false,
-                            path: "/verifysession",
+                            path: "/verifysession/seamless",
                             link: ""
                         },
                         {
