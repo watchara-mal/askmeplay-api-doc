@@ -44,7 +44,7 @@ export default {
             pageName: "Verify Session",
             pageDes: "Use for Operater Verify Session",
             methodType: "POST",
-            urlAPI: `{${'Operater-URL-API'}}`,
+            urlAPI: `{${process.env.VUE_APP_OPERATER_URL_API}}`,
             pathURL: "verifySession",
 
             headerReq: 'Request Body',

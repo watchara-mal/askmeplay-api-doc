@@ -44,7 +44,7 @@ export default {
             pageName: "Join Game",
             pageDes: "Use for Operater Join Game",
             methodType: "POST",
-            urlAPI: `{${'URL-API'}}`,
+            urlAPI: `{${process.env.VUE_APP_PROVIDER_URL_API}}`,
             pathURL: "joinGame",
 
             headerReq: 'Request Body',

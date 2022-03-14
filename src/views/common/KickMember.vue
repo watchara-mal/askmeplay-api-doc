@@ -44,7 +44,7 @@ export default {
             pageName: "Kick Member",
             pageDes: "Use for Operater Kick Member",
             methodType: "POST",
-            urlAPI: `{${'URL-API'}}`,
+            urlAPI: `{${process.env.VUE_APP_PROVIDER_URL_API}}`,
             pathURL: "kickMember",
 
             headerReq: 'Request Body',
