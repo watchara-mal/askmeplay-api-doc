@@ -15,7 +15,7 @@
                 <code>Method : {{ methodType }}</code>
             </div>
             <div>
-                <code>Path : {{urlAPI}}{{ pathURL }}</code>
+                <code>Path : {{ urlAPI }}/{{ pathURL }}</code>
             </div>
             <br>
         </div>
@@ -41,10 +41,10 @@ export default {
     data(){
         return {
             pageName: "Join Game",
-            pageDes: "Use for Partner Join Game",
+            pageDes: "Use for Operater Join Game",
             methodType: "POST",
-            urlAPI: "URL-API",
-            pathURL: "/joinGame",
+            urlAPI: `{${'URL-API'}}`,
+            pathURL: this.$route.name,
 
             headerReq: 'Request Body',
             textAreaReq: "",

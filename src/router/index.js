@@ -43,61 +43,62 @@ const routes = [
             // Home
             {
                 path: 'overview',
-                name: 'Overview',
+                name: 'overview',
+                pathText: '',
                 component: Overview
             },
 
             // Common
             {
                 path: 'joingame',
-                name: 'joingame',
+                name: 'joinGame',
                 component: JoinGame
             },
             {
                 path: 'verifysession',
-                name: 'verifysession',
+                name: 'verifySession',
                 component: VerifySession
             },
             {
                 path: 'kickmember',
-                name: 'kickmember',
+                name: 'kickMember',
                 component: KickMember
             },
             {
                 path: 'getgamelist',
-                name: 'getgamelist',
+                name: 'getGameList',
                 component: GetGameList
             },
             {
                 path: 'getbetdetailurl',
-                name: 'getbetdetailurl',
+                name: 'getBetDetailURL',
                 component: GetBetDetailURL
             },
             {
                 path: 'getbetdetailbybetid',
-                name: 'getbetdetailbybetid',
+                name: 'getBetDetailByBetID',
                 component: GetBetDetailByBetID
             },
             {
                 path: 'getbetdetailbytime',
-                name: 'getbetdetailbytime',
+                name: 'getBetDetailByTime',
                 component: GetBetDetailByTime
             },
 
             // Transfer
             {
                 path: 'exchangetransfer',
-                name: 'exchangetransfer',
+                name: 'exchangeTransfer',
                 component: ExchangeTransfer
             },
             {
                 path: 'getmemberinfo',
-                name: 'getmemberinfo',
+                name: 'getMemberInfo',
                 component: GetMemberInfo
             },
             {
                 path: 'verifytransfer',
-                name: 'verifytransfer',
+                name: 'verifyTransfer',
                 component: VerifyTransfer
             },
 
@@ -109,7 +110,7 @@ const routes = [
             },
             {
                 path: 'cancelbet',
-                name: 'cancelbet',
+                name: 'cancelBet',
                 component: CancelBet
             },
             {
@@ -119,19 +120,19 @@ const routes = [
             },
             {
                 path: 'resolvebet',
-                name: 'resolvebet',
+                name: 'resolveBet',
                 component: ResolveBet
             },
             {
                 path: 'verifybet',
-                name: 'verifybet',
+                name: 'verifyBet',
                 component: VerifyBet
             },
 
             // Detail
             {
                 path: 'errorcode',
-                name: 'errorcode',
+                name: 'errorCode',
                 component: ErrorCode
             },
             {
