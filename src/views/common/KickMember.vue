@@ -1,15 +1,132 @@
 <template>
     <div>
-        <h1>Kick Member</h1>
+        <div v-if="pageName!=''">
+            <h1>{{ pageName }}</h1>
+            <br>
+        </div>
+
+        <div v-if="pageDes!=''">
+            <p>{{ pageDes }}</p>
+            <br>
+        </div>
+        
+        <div v-if="methodType!='' && pathURL!=''">
+            <div>
+                <code>Method : {{ methodType }}</code>
+            </div>
+            <div>
+                <code>Path : {{ urlAPI }}/{{ pathURL }}</code>
+            </div>
+            <br>
+        </div>
+        
+        <CardCustom :header="headerReq" :textArea="textAreaReq" :fields="fieldsCommon" :items="itemsReq"/>
+        <br><br>
+
+        <CardCustom :header="headerRes" :textArea="textAreaRes" :fields="fieldsCommon" :items="itemsRes"/>
+        <br><br>
+
+        <CardCustom :header="headerErr" :fields="fieldsErr" :items="itemsErr"/>
+        
     </div>
 </template>
 
 <script>
+import CardCustom from '../../components/CardCustom.vue'
+import Methods from '../../methods'
 export default {
-    data() {
+    components: {
+        CardCustom
+    },
+
+    data(){
         return {
-            
+            pageName: "Kick Member",
+            pageDes: "Use for Operater Kick Member",
+            methodType: "POST",
+            urlAPI: `{${'URL-API'}}`,
+            pathURL: "kickMember",
+
+            headerReq: 'Request Body',
+            textAreaReq: "",
+            fieldsCommon: [
+                { key: 'name', label: 'Name' },
+                { key: 'type', label: 'Type' },
+                { key: 'mandatory', label: 'Mandatory' },
+                { key: 'example', label: 'Example Value' },
+                { key: 'des', label: 'Description' }
+            ],
+            itemsReq: [
+                { 
+                    name: 'gameID', 
+                    type: 'int',
+                    mandatory: 'N',
+                    example: '11001',
+                    des: 'ID of game.'
+                },
+                { 
+                    name: 'memberID', 
+                    type: 'string',
+                    mandatory: 'N',
+                    example: 'XXXX',
+                    des: 'ID of member.'
+                },
+                { 
+                    name: 'agentID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'XXXX',
+                    des: 'ID of agent.'
+                },
+                { 
+                    name: 'key', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '',
+                    des: ''
+                }
+            ],
+
+            headerRes: 'Response',
+            textAreaRes: "",
+            itemsRes: [
+                { 
+                    name: 'code', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '0000',
+                    des: ''
+                },
+                { 
+                    name: 'description', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'success',
+                    des: ''
+                }
+            ],
+
+            headerErr: 'Error Code',
+            fieldsErr: [
+                { key: 'val', label: 'Value' },
+                { key: 'des', label: 'Description' }
+            ],
+            itemsErr: [
+                { val: '0000', des: 'Success' },
+                { val: '9900', des: 'System cannot process this request at the moment. Please try again later' },
+                { val: '9902', des: 'Internal Server Error' }
+            ]
+
         }
+    },
+
+    created() {
+        this.textAreaReq = Methods.convertDataToJsonFormat(this.itemsReq, "");
+        this.textAreaRes = Methods.convertDataToJsonFormat(this.itemsRes, "response");
+    },
+
+    methods: {
+        
     }
 }
 </script>

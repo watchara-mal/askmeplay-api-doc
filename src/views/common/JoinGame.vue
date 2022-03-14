@@ -33,6 +33,7 @@
 
 <script>
 import CardCustom from '../../components/CardCustom.vue'
+import Methods from '../../methods'
 export default {
     components: {
         CardCustom
@@ -44,7 +45,7 @@ export default {
             pageDes: "Use for Operater Join Game",
             methodType: "POST",
             urlAPI: `{${'URL-API'}}`,
-            pathURL: this.$route.name,
+            pathURL: "joinGame",
 
             headerReq: 'Request Body',
             textAreaReq: "",
@@ -89,7 +90,7 @@ export default {
                     type: 'string',
                     mandatory: 'Y',
                     example: 'XXXX',
-                    des: 'ID of agent'
+                    des: 'ID of agent.'
                 },
                 { 
                     name: 'key', 
@@ -141,46 +142,12 @@ export default {
     },
 
     created() {
-        this.textAreaReq = this.convertDataToJsonFormat(this.itemsReq, "");
-        this.textAreaRes = this.convertDataToJsonFormat(this.itemsRes, "response");
+        this.textAreaReq = Methods.convertDataToJsonFormat(this.itemsReq, "");
+        this.textAreaRes = Methods.convertDataToJsonFormat(this.itemsRes, "response");
     },
 
     methods: {
-        convertDataToJsonFormat(data, typeJson){
-            let jsonFormat = "";
-            let spaceInit = 2;
-            if(data.length!=0){
-                jsonFormat = "{\n";
-                data.forEach((it, id) => {
-                    jsonFormat += `${this.addSpace(spaceInit)}"${it.name}": "${it.example}"`;
-
-                    if(data.length>(id+1)){
-                        jsonFormat += ",\n";
-                    }
-
-                    if(typeJson=="response" && id==1){
-                        jsonFormat += `${this.addSpace(spaceInit)}"data":  {\n`;
-                        spaceInit = 8;
-                    }
-                });
-
-                if(typeJson=="response"){
-                    jsonFormat += `\n${this.addSpace(2)}}`;
-                }
-                
-                jsonFormat += "\n}";
-            }
-
-            return jsonFormat;
-        },
-
-        addSpace(number){
-            let space = ""
-            for (let index = 0; index < number; index++) {
-                space += " ";
-            }
-            return space
-        }
+        
     }
 }
 </script>
