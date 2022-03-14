@@ -140,25 +140,48 @@ export default {
     },
 
     created() {
-        this.textAreaReq = this.convertDataToJsonFormat(this.itemsReq);
-        this.textAreaRes = this.convertDataToJsonFormat(this.itemsRes);
+        this.textAreaReq = this.convertDataToJsonFormat(this.itemsReq, "");
+        this.textAreaRes = this.convertDataToJsonFormat(this.itemsRes, "response");
     },
 
     methods: {
-        convertDataToJsonFormat(data){
-            let jsonFormat = ""
+        convertDataToJsonFormat(data, typeJson){
+            let jsonFormat = "";
+            let spaceInit = 2;
+            console.log(typeJson);
             if(data.length!=0){
                 jsonFormat = "{\n";
                 data.forEach((it, id) => {
-                    jsonFormat += `  "${it.name}": "${it.example}"`;
+                    jsonFormat += `${this.addSpace(spaceInit)}"${it.name}": "${it.example}"`;
+
                     if(data.length>(id+1)){
                         jsonFormat += ",\n";
                     }
+
+                    if(typeJson=="response" && id==1){
+                        jsonFormat += `${this.addSpace(spaceInit)}"data":  {\n`;
+                        spaceInit = 8;
+                    }
                 });
+
+                if(typeJson=="response"){
+                    jsonFormat += `\n${this.addSpace(2)}}`;
+                }
+                
                 jsonFormat += "\n}";
             }
 
+            console.log(jsonFormat);
+
             return jsonFormat;
+        },
+
+        addSpace(number){
+            let space = ""
+            for (let index = 0; index < number; index++) {
+                space += " ";
+            }
+            return space
         }
     }
 }
