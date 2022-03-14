@@ -148,7 +148,6 @@ export default {
         convertDataToJsonFormat(data, typeJson){
             let jsonFormat = "";
             let spaceInit = 2;
-            console.log(typeJson);
             if(data.length!=0){
                 jsonFormat = "{\n";
                 data.forEach((it, id) => {
