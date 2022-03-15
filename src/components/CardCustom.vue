@@ -13,7 +13,7 @@
                             class="mb-2"
                             :value="textArea" 
                             row="4"
-                            max-rows="10"
+                            max-rows="20"
                             readonly
                         ></b-form-textarea>
 
