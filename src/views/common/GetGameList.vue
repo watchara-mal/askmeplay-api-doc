@@ -1,15 +1,150 @@
 <template>
     <div>
-        <h1>Get Game List</h1>
+        <div v-if="pageName!=''">
+            <h1>{{ pageName }}</h1>
+            <br>
+        </div>
+
+        <div v-if="pageDes!=''">
+            <p>{{ pageDes }}</p>
+            <br>
+        </div>
+        
+        <div v-if="methodType!='' && pathURL!=''">
+            <div>
+                <code>Method : {{ methodType }}</code>
+            </div>
+            <div>
+                <code>Path : {{ urlAPI }}/{{ pathURL }}</code>
+            </div>
+            <br>
+        </div>
+        
+        <CardCustom :header="headerReq" :textArea="textAreaReq" :fields="fieldsCommon" :items="itemsReq"/>
+        <br><br>
+
+        <CardCustom :header="headerRes" :textArea="textAreaRes" :fields="fieldsCommon" :items="itemsRes"/>
+        <br><br>
+
+        <CardCustom :header="headerErr" :fields="fieldsErr" :items="itemsErr"/>
+        
     </div>
 </template>
 
 <script>
+import CardCustom from '../../components/CardCustom.vue'
+import Methods from '../../methods'
 export default {
-    data() {
+    components: {
+        CardCustom
+    },
+
+    data(){
         return {
-            
+            pageName: "Get Game List",
+            pageDes: "Use for Operater Get Game List",
+            methodType: "POST",
+            urlAPI: `{${process.env.VUE_APP_PROVIDER_URL_API}}`,
+            pathURL: "getGameList",
+
+            headerReq: 'Request Body',
+            textAreaReq: "",
+            fieldsCommon: [
+                { key: 'name', label: 'Name' },
+                { key: 'type', label: 'Type' },
+                { key: 'mandatory', label: 'Mandatory' },
+                { key: 'example', label: 'Example Value' },
+                { key: 'des', label: 'Description' }
+            ],
+            itemsReq: [
+                { 
+                    name: 'agentID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'XXXX',
+                    des: 'ID of agent.'
+                },
+                { 
+                    name: 'key', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '',
+                    des: ''
+                }
+            ],
+
+            headerRes: 'Response',
+            textAreaRes: "",
+            itemsRes: [
+                { 
+                    name: 'code', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '0000',
+                    des: ''
+                },
+                { 
+                    name: 'description', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'success',
+                    des: ''
+                },
+                { 
+                    name: 'ID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '11001',
+                    des: 'ID of game.'
+                },
+                { 
+                    name: 'name', 
+                    type: 'object',
+                    mandatory: 'Y',
+                    example: {
+                        en: "Space Riot",
+                        th: "Space Riot",
+                        cn: "Space Riot"
+                    },
+                    des: 'Support language.'
+                },
+                { 
+                    name: 'category', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'game',
+                    des: ''
+                },
+                { 
+                    name: 'type', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'slot',
+                    des: ''
+                }
+            ],
+
+            headerErr: 'Error Code',
+            fieldsErr: [
+                { key: 'val', label: 'Value' },
+                { key: 'des', label: 'Description' }
+            ],
+            itemsErr: [
+                { val: '0000', des: 'Success' },
+                { val: '9900', des: 'System cannot process this request at the moment. Please try again later' },
+                { val: '9902', des: 'Internal Server Error' }
+            ]
+
         }
+    },
+
+    created() {
+        this.textAreaReq = Methods.convertDataToJsonFormat(this.itemsReq, "");
+        this.textAreaRes = Methods.convertDataToJsonFormat(this.itemsRes, "array");
+    },
+
+    methods: {
+        
     }
 }
 </script>

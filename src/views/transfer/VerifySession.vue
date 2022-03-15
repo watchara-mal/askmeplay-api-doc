@@ -129,7 +129,7 @@ export default {
 
     created() {
         this.textAreaReq = Methods.convertDataToJsonFormat(this.itemsReq, "");
-        this.textAreaRes = Methods.convertDataToJsonFormat(this.itemsRes, "response");
+        this.textAreaRes = Methods.convertDataToJsonFormat(this.itemsRes, "object");
     },
 
     methods: {
