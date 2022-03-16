@@ -13,11 +13,15 @@
                             class="mb-2"
                             :value="textArea" 
                             row="4"
-                            max-rows="20"
+                            max-rows="50"
                             readonly
                         ></b-form-textarea>
 
-                        <b-table :fields="fields" :items="items" bordered></b-table>
+                        <b-table :fields="fields" :items="items" bordered>
+                            <!-- <template #cell(des)="data">
+                                {{ data.item.des }} 
+                            </template> -->
+                        </b-table>
                     </b-card-body>
                 </b-card>
             </div>
