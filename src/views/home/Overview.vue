@@ -38,10 +38,12 @@
 
         <b-card>
             <template #header>
-                <h5 class="mb-0">Join a trade.</h5>
+                <h5 class="mb-0">Flow Game Slot.</h5>
             </template>
             <b-card-body class="p-0">
-                Image
+                <div>
+                    <b-img :src="require('../../assets/gameslot.jpg')" center alt="Center image"></b-img>
+                </div>
             </b-card-body>
         </b-card>
 
