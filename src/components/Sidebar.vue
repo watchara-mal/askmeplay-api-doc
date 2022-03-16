@@ -25,9 +25,16 @@
                                 <b-icon :icon="menu.active ? 'chevron-down':'chevron-up'" font-scale="1"></b-icon>
                             </div>
                         </b-nav-item>
-                        <b-collapse :id="`${index}`" role="tabpanel">
+                        <b-collapse :id="`${index}`" role="tabpanel" :style="{ display: (menu.active ? 'block':'none')}">
                             <b-nav v-for="(subMenu,subIndex) in menu.subMenuList" :key="subIndex" vertical class="w-100 nav-sub-menu">
-                                <b-nav-item :to="subMenu.link=='' ? subMenu.path : subMenu.path+subMenu.link " :class="subMenu.active ? 'nav-item-active':''" @click="subMenuActive(index,subIndex)">
+                                <!-- <b-nav-item :to="subMenu.link=='' ? subMenu.path : subMenu.path+subMenu.link " :class="subMenu.active ? 'nav-item-active':''" @click="subMenuActive(index,subIndex)">
+                                    {{ subMenu.text }}
+                                </b-nav-item> -->
+
+                                <b-nav-item v-if="subMenu.link==''" :to="subMenu.path" :class="subMenu.active ? 'nav-item-active':''" @click="subMenuActive(index,subIndex)">
+                                    {{ subMenu.text }}
+                                </b-nav-item>
+                                <b-nav-item v-else :href="subMenu.path+subMenu.link" :class="subMenu.active ? 'nav-item-active':''" @click="subMenuActive(index,subIndex)">
                                     {{ subMenu.text }}
                                 </b-nav-item>
                             </b-nav>
@@ -44,7 +51,7 @@
 export default {
     data() {
         return {
-            expanded: true,
+            isLink: true,
             navbarName: "Askmeplay Open API",
             visible: true,
             menuList: [
@@ -59,7 +66,7 @@ export default {
                             icon: "",
                             active: false,
                             path: "/overview",
-                            link: ""
+                            link: "#overview"
                         },
                         {
                             text: "Update",
@@ -276,7 +283,8 @@ export default {
     created() {
         this.menuList.forEach(menu => {
             menu.subMenuList.forEach(subMenu => {
-                if(subMenu.path == this.$route.path && subMenu.link == ""){
+                if(subMenu.path == this.$route.path && subMenu.link == this.$route.hash){
+                    menu.active = true;
                     subMenu.active = true;
                 }
             });

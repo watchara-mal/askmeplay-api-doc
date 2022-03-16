@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div id="overview" :style="styleOverview"></div>
         <h1>Overview</h1>
         <br>
         <!-- <b-link href="#flow">Flow</b-link> -->
@@ -14,9 +15,11 @@
         <p>API type</p>
         <p>1. Transfer type</p>
         <p>2. Seamless type</p>
+        <div id="update"></div>
         <br><br><br>
+        <div></div>
 
-        <h1 id="update">Update</h1>
+        <h1>Update</h1>
         <br>
 
         <b-card>
@@ -31,12 +34,13 @@
                 </b-table>
             </b-card-body>
         </b-card>
-        <br><br>
+        <div id="flow"></div>
+        <br><br><br>
 
-        <h1 id="flow">Flow</h1>
+        <h1>Flow</h1>
         <br>
 
-        <b-card>
+        <b-card id="flow">
             <template #header>
                 <h5 class="mb-0">Flow Game Slot.</h5>
             </template>
@@ -55,6 +59,7 @@
 export default {
     data() {
         return {
+            styleOverview: { 'padding-bottom': '60px' },
             fields: [
                 { key: 'no', label: 'No.', thStyle: { width: '100px' } },
                 { key: 'date', label: 'Date', thStyle: { width: '150px' } },
@@ -65,6 +70,12 @@ export default {
                 { date: '1/1/2022', version: 'v1', detail: 'init' }
             ]
         }
+    },
+
+    created() {
+        // if(this.$route.hash == "#overview"){
+        //     this.styleOverview = { 'padding-bottom': '60px' }   
+        // }
     }
 }
 </script>
