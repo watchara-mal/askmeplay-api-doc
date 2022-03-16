@@ -1,15 +1,214 @@
 <template>
     <div>
-        <h1>Verify Transfer</h1>
+        <div v-if="pageName!=''">
+            <h1>{{ pageName }}</h1>
+            <br>
+        </div>
+
+        <div v-if="pageDes!=''">
+            <p>{{ pageDes }}</p>
+            <br>
+        </div>
+        
+        <div v-if="methodType!='' && pathURL!=''">
+            <div>
+                <code>Method : {{ methodType }}</code>
+            </div>
+            <div>
+                <code>Path : {{ urlAPI }}/{{ pathURL }}</code>
+            </div>
+            <br>
+        </div>
+        
+        <CardCustom :header="headerReq" :textArea="textAreaReq" :fields="fieldsCommon" :items="itemsReq"/>
+        <br><br>
+
+        <CardCustom :header="headerRes" :textArea="textAreaRes" :fields="fieldsCommon" :items="itemsRes"/>
+        <br><br>
+
+        <CardCustom :header="headerErr" :fields="fieldsErr" :items="itemsErr"/>
+        
     </div>
 </template>
 
 <script>
+import CardCustom from '../../components/CardCustom.vue'
 export default {
-    data() {
+    components: {
+        CardCustom
+    },
+
+    data(){
         return {
-            
+            pageName: "Verify Transfer",
+            pageDes: "Use for Operater Verify Transfer",
+            methodType: "POST",
+            urlAPI: `{${process.env.VUE_APP_PROVIDER_URL_API}}`,
+            pathURL: "verifyTransfer",
+
+            headerReq: 'Request Body',
+            textAreaReq: "",
+            fieldsCommon: [
+                { key: 'name', label: 'Name' },
+                { key: 'type', label: 'Type' },
+                { key: 'mandatory', label: 'Mandatory' },
+                { key: 'example', label: 'Example Value' },
+                { key: 'des', label: 'Description' }
+            ],
+            itemsReq: [
+                { 
+                    name: 'transactionID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '2021123105000000001',
+                    des: 'YYYYDDMM+<API ID(05)>+<running number 9 digits>'
+                },
+                { 
+                    name: 'agentID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'XXXX',
+                    des: 'ID of agent.'
+                },
+                { 
+                    name: 'key', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '',
+                    des: ''
+                }
+            ],
+            jsonReq: {
+                transactionID: "2021123105000000001",
+                agentID: "XXXX",
+                key: ""
+            },
+
+            headerRes: 'Response',
+            textAreaRes: "",
+            itemsRes: [
+                { 
+                    name: 'code', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '0000',
+                    des: ''
+                },
+                { 
+                    name: 'description', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'success',
+                    des: ''
+                },
+                { 
+                    name: 'traceID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '97209cac',
+                    des: ''
+                },
+                { 
+                    name: 'data', 
+                    type: 'object',
+                    mandatory: 'Y',
+                    example: '',
+                    des: ''
+                },
+                { 
+                    name: 'transationID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '2021123105000000001',
+                    des: 'YYYYDDMM+<API ID(05)>+<running number 9 digits>'
+                },
+                { 
+                    name: 'balanceBefore', 
+                    type: 'decimal',
+                    mandatory: 'Y',
+                    example: '10000',
+                    des: ''
+                },
+                { 
+                    name: 'balanceAfter', 
+                    type: 'decimal',
+                    mandatory: 'Y',
+                    example: '10000',
+                    des: ''
+                },
+                { 
+                    name: 'status', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '',
+                    des: ''
+                },
+                { 
+                    name: 'transferType', 
+                    type: 'int',
+                    mandatory: 'Y',
+                    example: '1',
+                    des: `${"Transfer type:\n1: provider > operator. (Transfer all balance; the amount is ignored)\n2: operator > provider.\n3: provider > operator."}`
+                },
+                { 
+                    name: 'transferTime', 
+                    type: 'datetime',
+                    mandatory: 'Y',
+                    example: '',
+                    des: ''
+                },
+                { 
+                    name: 'amount', 
+                    type: 'decimal',
+                    mandatory: 'Y',
+                    example: '10000',
+                    des: ''
+                },
+                { 
+                    name: 'memberID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: 'member01',
+                    des: ''
+                }
+            ],
+            jsonRes: {
+                code: "0000",
+                description: "success",
+                traceID: "97209cac",
+                data: {
+                    transactionID: "2021123105000000001",
+                    balanceBefore: 10000,
+                    balanceAfter: 10000,
+                    status: "",
+                    transferType: 1,
+                    transferTime: "",
+                    amount: 10000,
+                    memberID: "member01"
+                }
+            },
+
+            headerErr: 'Error Code',
+            fieldsErr: [
+                { key: 'val', label: 'Value' },
+                { key: 'des', label: 'Description' }
+            ],
+            itemsErr: [
+                { val: '0000', des: 'Success' },
+                { val: '9900', des: 'System cannot process this request at the moment. Please try again later' },
+                { val: '9902', des: 'Internal Server Error' }
+            ]
+
         }
+    },
+
+    created() {
+        this.textAreaReq = JSON.stringify(this.jsonReq, undefined, 4);
+        this.textAreaRes = JSON.stringify(this.jsonRes, undefined, 4);
+    },
+
+    methods: {
+        
     }
 }
 </script>
