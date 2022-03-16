@@ -1,4 +1,15 @@
 export default{
+    convertDataToPathParams(data){
+        let pathParams = ""
+        data.forEach((it, id) => {
+            pathParams += `${it.name}=${it.example}` 
+            if(data.length>(id+1)){
+                pathParams += "&"
+            }
+        });
+        return pathParams;
+    },
+
     convertDataToJsonFormat(data, typeData){
         let jsonFormat = "";
         let spaceInit = 2;
