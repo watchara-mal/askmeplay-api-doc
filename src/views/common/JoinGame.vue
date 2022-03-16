@@ -33,7 +33,6 @@
 
 <script>
 import CardCustom from '../../components/CardCustom.vue'
-import Methods from '../../methods'
 export default {
     components: {
         CardCustom
@@ -100,6 +99,14 @@ export default {
                     des: ''
                 }
             ],
+            jsonReq: {
+                token: "e6c49dd6f6d6333367e43b5f1c1173c8",
+                gameID: 11001,
+                language: "EN",
+                homeURL: "www.google.com",
+                agentID: "XXXX",
+                key: ""
+            },
 
             headerRes: 'Response',
             textAreaRes: "",
@@ -119,6 +126,20 @@ export default {
                     des: ''
                 },
                 { 
+                    name: 'traceID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '97209cac',
+                    des: ''
+                },
+                { 
+                    name: 'data', 
+                    type: 'object',
+                    mandatory: 'Y',
+                    example: '',
+                    des: ''
+                },
+                { 
                     name: 'URL', 
                     type: 'string',
                     mandatory: 'Y',
@@ -126,6 +147,14 @@ export default {
                     des: ''
                 }
             ],
+            jsonRes: {
+                code: "0000",
+                description: "success",
+                traceID: "97209cac",
+                data: {
+                    URL: "http://google.com"
+                }
+            },
 
             headerErr: 'Error Code',
             fieldsErr: [
@@ -142,8 +171,8 @@ export default {
     },
 
     created() {
-        this.textAreaReq = Methods.convertDataToJsonFormat(this.itemsReq, "");
-        this.textAreaRes = Methods.convertDataToJsonFormat(this.itemsRes, "object");
+        this.textAreaReq = JSON.stringify(this.jsonReq, undefined, 4);
+        this.textAreaRes = JSON.stringify(this.jsonRes, undefined, 4);
     },
 
     methods: {

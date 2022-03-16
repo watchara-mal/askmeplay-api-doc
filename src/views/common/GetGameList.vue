@@ -33,7 +33,6 @@
 
 <script>
 import CardCustom from '../../components/CardCustom.vue'
-import Methods from '../../methods'
 export default {
     components: {
         CardCustom
@@ -72,6 +71,10 @@ export default {
                     des: ''
                 }
             ],
+            jsonReq: {
+                agentID: "XXXX",
+                key: ""
+            },
 
             headerRes: 'Response',
             textAreaRes: "",
@@ -88,6 +91,20 @@ export default {
                     type: 'string',
                     mandatory: 'Y',
                     example: 'success',
+                    des: ''
+                },
+                { 
+                    name: 'traceID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '97209cac',
+                    des: ''
+                },
+                { 
+                    name: 'data', 
+                    type: 'object',
+                    mandatory: 'Y',
+                    example: '',
                     des: ''
                 },
                 { 
@@ -123,6 +140,21 @@ export default {
                     des: ''
                 }
             ],
+            jsonRes: {
+                code: "0000",
+                description: "success",
+                traceID: "97209cac",
+                data: {
+                    ID: "11001",
+                    name: {
+                        en: "Space Riot",
+                        th: "Space Riot",
+                        cn: "Space Riot"
+                    },
+                    category: "game",
+                    type: "slot"
+                }
+            },
 
             headerErr: 'Error Code',
             fieldsErr: [
@@ -139,8 +171,8 @@ export default {
     },
 
     created() {
-        this.textAreaReq = Methods.convertDataToJsonFormat(this.itemsReq, "");
-        this.textAreaRes = Methods.convertDataToJsonFormat(this.itemsRes, "array");
+        this.textAreaReq = JSON.stringify(this.jsonReq, undefined, 4);
+        this.textAreaRes = JSON.stringify(this.jsonRes, undefined, 4);
     },
 
     methods: {

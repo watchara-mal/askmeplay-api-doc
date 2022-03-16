@@ -33,7 +33,6 @@
 
 <script>
 import CardCustom from '../../components/CardCustom.vue'
-import Methods from '../../methods'
 export default {
     components: {
         CardCustom
@@ -68,7 +67,7 @@ export default {
                     name: 'memberID', 
                     type: 'string',
                     mandatory: 'N',
-                    example: 'XXXX',
+                    example: 'member01',
                     des: 'ID of member.'
                 },
                 { 
@@ -86,6 +85,12 @@ export default {
                     des: ''
                 }
             ],
+            jsonReq: {
+                gameID: 11001,
+                memberID: "member01",
+                agentID: "XXXX",
+                key: ""
+            },
 
             headerRes: 'Response',
             textAreaRes: "",
@@ -103,8 +108,20 @@ export default {
                     mandatory: 'Y',
                     example: 'success',
                     des: ''
+                },
+                { 
+                    name: 'traceID', 
+                    type: 'string',
+                    mandatory: 'Y',
+                    example: '97209cac',
+                    des: ''
                 }
             ],
+            jsonRes: {
+                code: "0000",
+                description: "success",
+                traceID: "97209cac",
+            },
 
             headerErr: 'Error Code',
             fieldsErr: [
@@ -121,8 +138,8 @@ export default {
     },
 
     created() {
-        this.textAreaReq = Methods.convertDataToJsonFormat(this.itemsReq, "");
-        this.textAreaRes = Methods.convertDataToJsonFormat(this.itemsRes, "object");
+        this.textAreaReq = JSON.stringify(this.jsonReq, undefined, 4);
+        this.textAreaRes = JSON.stringify(this.jsonRes, undefined, 4);
     },
 
     methods: {
