@@ -20,7 +20,12 @@
             <br>
         </div>
         
-        <CardCustom :header="headerReq" :textArea="textAreaReq" :fields="fieldsCommon" :items="itemsReq"/>
+        <CardCustom :header="headerReq" :fields="fieldsCommon" :items="itemsReq"/>
+        <div class="pt-2">
+            <code>
+                Example: {{ urlAPI }}/{{ pathURL }}?{{ pathParams }}
+            </code>
+        </div>
         <br><br>
 
         <CardCustom :header="headerRes" :textArea="textAreaRes" :fields="fieldsCommon" :items="itemsRes"/>
@@ -33,6 +38,7 @@
 
 <script>
 import CardCustom from '../../components/CardCustom.vue'
+import Method from '../../methods'
 export default {
     components: {
         CardCustom
@@ -46,7 +52,7 @@ export default {
             urlAPI: `{${process.env.VUE_APP_PROVIDER_URL_API}}`,
             pathURL: "verifyTransfer",
 
-            headerReq: 'Request Body',
+            headerReq: 'Request Params',
             textAreaReq: "",
             fieldsCommon: [
                 { key: 'name', label: 'Name' },
@@ -83,6 +89,8 @@ export default {
                 agentID: "XXXX",
                 key: ""
             },
+
+            pathParams: "",
 
             headerRes: 'Response',
             textAreaRes: "",
@@ -203,7 +211,7 @@ export default {
     },
 
     created() {
-        this.textAreaReq = JSON.stringify(this.jsonReq, undefined, 4);
+        this.pathParams = Method.convertDataToPathParams(this.itemsReq);
         this.textAreaRes = JSON.stringify(this.jsonRes, undefined, 4);
     },
 

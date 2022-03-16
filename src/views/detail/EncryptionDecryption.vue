@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Parameter</h1>
+        <h1>Encryption / Decryption</h1>
     </div>
 </template>
 

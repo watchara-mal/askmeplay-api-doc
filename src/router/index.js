@@ -29,8 +29,7 @@ import VerifyBet from '../views/seamless/VerifyBet.vue'
 
 // Detail
 import ErrorCode from '../views/detail/ErrorCode.vue'
-import Parameter from '../views/detail/Parameter.vue'
-import Types from '../views/detail/Types.vue'
+import EncryptionDecryption from '../views/detail/EncryptionDecryption.vue'
 
 Vue.use(VueRouter)
 
@@ -142,15 +141,10 @@ const routes = [
                 component: ErrorCode
             },
             {
-                path: 'parameter',
-                name: 'parameter',
-                component: Parameter
-            },
-            {
-                path: 'types',
-                name: 'types',
-                component: Types
-            },
+                path: 'encrypdecryp',
+                name: 'encrypdecryp',
+                component: EncryptionDecryption
+            }
 
         ]
     }

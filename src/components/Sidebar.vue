@@ -254,17 +254,10 @@ export default {
                     path: "",
                     subMenuList: [
                         {
-                            text: "Parameter",
+                            text: "Encryption / Decryption",
                             icon: "",
                             active: false,
-                            path: "/parameter",
-                            link: ""
-                        },
-                        {
-                            text: "Types",
-                            icon: "",
-                            active: false,
-                            path: "/types",
+                            path: "/encrypdecryp",
                             link: ""
                         },
                         {
