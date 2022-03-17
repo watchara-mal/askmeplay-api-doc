@@ -150,7 +150,7 @@ export default {
                     name: 'URL', 
                     type: 'string',
                     mandatory: 'Y',
-                    example: '',
+                    example: 'http://google.com',
                     des: ''
                 }
             ],
