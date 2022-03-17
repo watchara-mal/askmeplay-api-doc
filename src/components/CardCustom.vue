@@ -18,9 +18,14 @@
                         ></b-form-textarea>
 
                         <b-table :fields="fields" :items="items" bordered>
-                            <!-- <template #cell(des)="data">
-                                {{ data.item.des }} 
-                            </template> -->
+                            <template #cell(des)="data">
+                                <template v-if="data.item.des=='link'">
+                                    <b-link :href="pathEncryptDecrypt">How to generate key</b-link>
+                                </template>
+                                <template v-else>
+                                    {{ data.item.des }}                                   
+                                </template>
+                            </template>
                         </b-table>
                     </b-card-body>
                 </b-card>
@@ -33,7 +38,7 @@
 export default {
     data() {
         return {
-
+            pathEncryptDecrypt: '/encrypdecryp'
         }
     },
 
