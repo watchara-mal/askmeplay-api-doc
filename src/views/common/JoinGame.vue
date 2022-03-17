@@ -170,8 +170,19 @@ export default {
             ],
             itemsErr: [
                 { val: '0000', des: 'Success' },
-                { val: '9900', des: 'System cannot process this request at the moment. Please try again later' },
-                { val: '9902', des: 'Internal Server Error' }
+
+                // internal
+                { val: '9999', des: 'Request id is required.' },
+                { val: '9900', des: 'System cannot process this request at the moment. Please try again later.' },
+                { val: '9901', des: 'System cannot process this request at the moment. Please try again later. (Bad Request)' },
+                { val: '9902', des: 'System cannot process this request at the moment. Please try again later. (Internal Server Error)' },
+                { val: '9903', des: 'System cannot process this request at the moment. Please try again later. (DB Session Not Found)' },
+                { val: '9904', des: 'Decoding incoming request process is failed' },
+                { val: '9905', des: 'Validation failed' },
+
+                { val: '6001', des: 'Agent user is not found.' },
+                { val: '6003', des: 'Invalid game code.' },
+                { val: '7001', des: 'Validation failed' }
             ]
 
         }

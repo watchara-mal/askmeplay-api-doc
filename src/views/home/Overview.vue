@@ -15,11 +15,11 @@
         <p>API type</p>
         <p>1. Transfer type</p>
         <p>2. Seamless type</p>
-        <div id="update"></div>
+        <div id="version"></div>
         <br><br><br>
         <div></div>
 
-        <h1>Update</h1>
+        <h1>Version Control</h1>
         <br>
 
         <b-card>

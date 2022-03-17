@@ -69,11 +69,11 @@ export default {
                             link: "#overview"
                         },
                         {
-                            text: "Update",
+                            text: "Version Control",
                             icon: "",
                             active: false,
                             path: "/overview",
-                            link: "#update"
+                            link: "#version"
                         },
                         {
                             text: "Flow",
