@@ -23,7 +23,12 @@
                                     <b-link :href="pathEncryptDecrypt">How to generate key</b-link>
                                 </template>
                                 <template v-else>
-                                    {{ data.item.des }}                                   
+                                    <template v-if="typeof data.item.des=='object'">
+                                        <p v-for="(des, idDes) in data.item.des" :key="idDes">{{ des }}</p>
+                                    </template>
+                                    <template v-else>
+                                        {{ data.item.des }} 
+                                    </template>                              
                                 </template>
                             </template>
                         </b-table>
