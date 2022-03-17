@@ -81,14 +81,19 @@ export default {
                     type: 'int',
                     mandatory: 'Y',
                     example: '1',
-                    des: `${"Transfer type:\n1: provider > operator. (Transfer all balance; the amount is ignored)\n2: operator > provider.\n3: provider > operator."}`
+                    des: [
+                        'Transfer type:',
+                        '1: provider > operator. (Transfer all balance; the amount is ignored)',
+                        '2: operator > provider.',
+                        '3: provider > operator.'
+                    ]
                 },
                 { 
                     name: 'memberID', 
                     type: 'string',
                     mandatory: 'Y',
                     example: 'member01',
-                    des: 'create new member if does not exist and transferType is 2(deposit)'
+                    des: 'Create new member if does not exist and transferType is 2 (deposit)'
                 },
                 { 
                     name: 'agentID', 
