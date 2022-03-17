@@ -87,15 +87,15 @@ export default {
                     name: 'key', 
                     type: 'string',
                     mandatory: 'Y',
-                    example: '',
-                    des: ''
+                    example: '6bf1a086551b7609123456787542381de1fd17ec',
+                    des: 'link'
                 }
             ],
             jsonReq: {
                 token: "e6c49dd6f6d6333367e43b5f1c1173c8",
                 requestID: "202112311000000001",
                 agentID: "XXXX",
-                key: ""
+                key: "6bf1a086551b7609123456787542381de1fd17ec"
             },
 
             pathParams: "",

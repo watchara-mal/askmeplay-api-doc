@@ -80,14 +80,14 @@ export default {
                     name: 'language', 
                     type: 'string',
                     mandatory: 'Y',
-                    example: 'EN',
-                    des: 'EN,TH,CN'
+                    example: 'en',
+                    des: 'en,th,cn'
                 },
                 { 
                     name: 'homeURL', 
                     type: 'string',
                     mandatory: 'N',
-                    example: 'www.google.com',
+                    example: 'http://google.com',
                     des: 'URL redirect to when the player logout.'
                 },
                 { 
@@ -101,17 +101,17 @@ export default {
                     name: 'key', 
                     type: 'string',
                     mandatory: 'Y',
-                    example: '',
-                    des: ''
+                    example: '6bf1a086551b7609123456787542381de1fd17ec',
+                    des: 'link'
                 }
             ],
             jsonReq: {
                 token: "e6c49dd6f6d6333367e43b5f1c1173c8",
                 gameID: 11001,
                 language: "EN",
-                homeURL: "www.google.com",
+                homeURL: "http://google.com",
                 agentID: "XXXX",
-                key: ""
+                key: "6bf1a086551b7609123456787542381de1fd17ec"
             },
             pathParams: "",
 

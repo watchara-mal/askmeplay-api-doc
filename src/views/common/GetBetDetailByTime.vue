@@ -108,8 +108,8 @@ export default {
                     name: 'key', 
                     type: 'string',
                     mandatory: 'Y',
-                    example: '',
-                    des: ''
+                    example: '6bf1a086551b7609123456787542381de1fd17ec',
+                    des: 'link'
                 }
             ],
             jsonReq: {
@@ -119,7 +119,7 @@ export default {
                 agentID: "XXXX",
                 pageNo: 1,
                 pageLimit: 10,
-                key: ""
+                key: "6bf1a086551b7609123456787542381de1fd17ec"
             },
 
             pathParams: "",
